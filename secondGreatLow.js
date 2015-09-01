@@ -107,9 +107,34 @@ var sortNumber = function(a,b) {
 }
 
 
+ /*/          \ \
+ ---SOLUTION 4---
+ \ \         /*/
+function secondGreatLow4(numbers) {
+  var uniqArr = [];
+  var answer = [];
+  // remove duplicates
+  var uniqArr = numbers.filter(function (item, pos) {
+      return numbers.indexOf(item) == pos;
+    });
+
+  // sort
+  uniqArr.sort(function (a, b) {
+      return a > b;
+    });
+
+  answer.push(uniqArr[1]); // 2nd min:12
+  answer.push(uniqArr[uniqArr.length-2]); // 2nd max:12
+
+  return answer;
+}
+
+
+
 
 module.exports = {
   secondGreatLow1 : secondGreatLow1,
   secondGreatLow2 : secondGreatLow2,
-  secondGreatLow3 : secondGreatLow3
+  secondGreatLow3 : secondGreatLow3,
+  secondGreatLow4 : secondGreatLow4
 }

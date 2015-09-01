@@ -1,6 +1,7 @@
 var test1 = [7, 7, 12, 98, 106]
 var test2 = [5,23, -112, 6, 70, 70, -112]
 var test3 = [-22, 22]
+var test4 = [10, 89, 3]
 
  /*/          \ \
  ---SOLUTION 1---
@@ -26,7 +27,8 @@ var secondMin = function (arr){
     arrCopy.splice(arrCopy.indexOf(min), 1);
     //check for duplicates
     for (var i = 0; i < arrCopy.length; i++) {
-      if (arrCopy.indexOf(min) == -1) {
+      if (arrCopy.indexOf(min) === -1) {
+        //.apply is used for arrays
         return Math.min.apply(null, arrCopy);
       } else {
         arrCopy.splice(arrCopy.indexOf(min), 1);
@@ -47,7 +49,7 @@ var secondMax = function (arr){
     arrCopy.splice(arrCopy.indexOf(max), 1);
     //check for duplicates
     for (var i = 0; i < arrCopy.length; i++) {
-      if (arrCopy.indexOf(max) == -1) {
+      if (arrCopy.indexOf(max) === -1) {
         return Math.max.apply(null, arrCopy);
       } else {
         arrCopy.splice(arrCopy.indexOf(max), 1);
@@ -63,6 +65,7 @@ var secondMax = function (arr){
  ---SOLUTION 2---
  \ \         /*/
 function secondGreatLow2 (numbers) {
+  numbers.sort(function(a,b) { return a-b; });
   var arr = withoutDuplicates(numbers);
   arr.sort(function(a,b) { return a-b; });
   return arr[1] + ' ' + arr[arr.length-2];

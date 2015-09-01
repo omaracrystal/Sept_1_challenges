@@ -84,10 +84,32 @@ var withoutDuplicates = function(arr) {
 
 
 
+ /*/          \ \
+ ---SOLUTION 3---
+ \ \         /*/
+function secondGreatLow3(numbers) {
+  var noDups = uniq(numbers);
+  // console.log(noDups, numbers);
+  var l = noDups.length;
+  return [noDups[1], noDups[l-2]];
+}
+
+//helper function 1
+var uniq = function(numbers) {
+    return numbers.sort(sortNumber).filter(function(item, pos, arr) {
+        return !pos || item != arr[pos - 1];
+    })
+}
+
+//helper function 2
+var sortNumber = function(a,b) {
+    return a - b;
+}
 
 
 
 module.exports = {
   secondGreatLow1 : secondGreatLow1,
   secondGreatLow2 : secondGreatLow2,
+  secondGreatLow3 : secondGreatLow3
 }
